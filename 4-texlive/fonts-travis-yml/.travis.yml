@@ -21,16 +21,16 @@ before_script: cd $TRAVIS_BUILD_DIR/src/
 script:
   # Texliveonfly will download packages automatically
   # Compile with lualatex to handle fonts properly
-  - texliveonfly fonts.tex --compiler=lualatex
+  - texliveonfly master.tex --compiler=pdflatex
   # You can use latexmk to automatically handle bibtex and references (recommended)
   # We run it with lualatex to handle fonts properly
-  - latexmk -pdflua fonts.tex
+  #- latexmk -pdflua fonts.tex
 
   # But you could use any other compiler as well instead of latexmk. Example:
-#  - pdflatex main.tex
-#  - bibtex main
-#  - pdflatex main.tex
-#  - pdflatex main.tex # Compile twice to fix references
+  - pdflatex main.tex
+  - bibtex main
+  - pdflatex main.tex
+  - pdflatex main.tex # Compile twice to fix references
 
   # You can also pass arguments to texliveonfly:
 #  - texliveonfly --arguments='-shell-escape' main.tex
